@@ -4,13 +4,10 @@ export const CREATE_GAME = 'CREATE_GAME'
 
 const api = new ApiCLient()
 
-function createGame(optional, arguments) {
-  return {
-    type: 'CREATE_GAME',
-    payload: {
-      api.post('/games')
+export default (createGame) => {
+  return dispatch => {
+      api.post('/games', {...createGame})
         .then(res => console.log(res))
         .catch(err => console.error(err))
-      }
   }
 }
