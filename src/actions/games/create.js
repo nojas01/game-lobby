@@ -1,13 +1,20 @@
 import ApiCLient from '../../api/client'
-
+import { showError, loading  } from '../loading'
 export const CREATE_GAME = 'CREATE_GAME'
 
 const api = new ApiCLient()
+export default () => {
 
-export default (createGame) => {
   return dispatch => {
-      api.post('/games', {...createGame})
-        .then(res => console.log(res))
-        .catch(err => console.error(err))
+      api.post('games')
+        .then(dispatch(loading(true)))
+        .then(res => {
+          dispatch({ type: CREATE_GAME, payload: res.body}),
+          dispatch(loading(false))
+        })
+        .catch(err => {
+          console.error(err)
+          dispatch(showError(err))
+        })
   }
 }
