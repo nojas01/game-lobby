@@ -1,11 +1,20 @@
-const router = require('express').Router()
-const passport = require('../config/auth')
-const { Game } = require('../models')
+import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 
-const authenticate = passport.authorize('jwt', { session: false })
+import {
+  Lobby,
+  SignIn,
+  SignUp
+} from './containers'
 
-module.exports = io => {
-  // all existing routes here!
-
-  return router
+export default class Routes extends Component {
+  render() {
+    return (
+      <div>
+        <Route exact path="/" component={Lobby} />
+        <Route path="/sign-in" component={SignIn} />
+        <Route path="/sign-up" component={SignUp} />
+      </div>
+    )
+  }
 }

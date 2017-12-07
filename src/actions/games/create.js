@@ -1,8 +1,8 @@
-import ApiCLient from '../../api/client'
+import ApiClient from '../../api/client'
 import { showError, loading  } from '../loading'
 export const CREATE_GAME = 'CREATE_GAME'
 
-const api = new ApiCLient()
+const api = new ApiClient()
 export default () => {
 
   return dispatch => {
