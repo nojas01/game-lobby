@@ -1,4 +1,5 @@
 import ApiClient from '../../api/client'
+import websocket from '../websocket'
 import {
   APP_LOADING,
   APP_DONE_LOADING,

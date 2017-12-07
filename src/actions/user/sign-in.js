@@ -1,6 +1,7 @@
 // src/actions/user/sign-in.js
 import { replace } from 'react-router-redux'
 import ApiClient from '../../api/client'
+import websocket from '../websocket'
 import {
   APP_LOADING,
   APP_DONE_LOADING,
@@ -28,7 +29,7 @@ export default ({ email, password}) => {
         // Redirect programatically to the Lobby
         dispatch(replace('/'))
 
-        // dispatch(websocket.connect())
+        dispatch(websocket.connect())
 
         return api.get('users/me')
       })
